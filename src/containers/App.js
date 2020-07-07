@@ -1,5 +1,4 @@
 // import React from 'react';
-// import './App.css';
 // import Posts from '../components/Posts/Posts'
 
 // const app = () =>  {
@@ -41,15 +40,78 @@
 // export default app;
 
 import React, { Component } from 'react'
+import './App.css';
 import axios from 'axios'
-// import Posts from '../components/Posts/Posts'
+import Post from '../components/Post/Post'
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       apiResponse: "",
-      value: 1
+      value: 1,
+      dummyApiResponse: [
+        [
+          {type: 'h1', content: 'Hello'},
+          {type: 'h2', content: 'Ez valami mas'},
+          {type: 'h2', content: 'Ez meg egy nagyon hosszu szoveg hogy le tudjuk tesztelni hogy nem log e ki a  viewportbol.'},
+          {type: 'h2', content: 'Mizuka van'},
+          {type: 'h3', content: 'Ez valami mas'},
+          {type: 'h3', content: 'Hello'},
+          {type: 'h4', content: 'Ez meg egy nagyon hosszu szoveg hogy le tudjuk tesztelni hogy nem log e ki a  viewportbol.'},
+          {type: 'h4', content: 'Ez valami mas'},
+          {type: 'h4', content: 'Mizuka van'},
+          {type: 'h4', content: 'Ez valami mas'},
+        ],
+        [
+          {type: 'h1', content: 'Hello'},
+          {type: 'h2', content: 'Ez valami mas'},
+          {type: 'h2', content: 'Ez meg egy nagyon hosszu szoveg hogy le tudjuk tesztelni hogy nem log e ki a  viewportbol.'},
+          {type: 'h2', content: 'Mizuka van'},
+          {type: 'h3', content: 'Ez valami mas'},
+          {type: 'h3', content: 'Hello'},
+          {type: 'h4', content: 'Ez meg egy nagyon hosszu szoveg hogy le tudjuk tesztelni hogy nem log e ki a  viewportbol.'},
+          {type: 'h4', content: 'Ez valami mas'},
+          {type: 'h4', content: 'Mizuka van'},
+          {type: 'h4', content: 'Ez valami mas'},
+        ],
+        [
+          {type: 'h1', content: 'Hello'},
+          {type: 'h2', content: 'Ez valami mas'},
+          {type: 'h2', content: 'Ez meg egy nagyon hosszu szoveg hogy le tudjuk tesztelni hogy nem log e ki a  viewportbol.'},
+          {type: 'h2', content: 'Mizuka van'},
+          {type: 'h3', content: 'Ez valami mas'},
+          {type: 'h3', content: 'Hello'},
+          {type: 'h4', content: 'Ez meg egy nagyon hosszu szoveg hogy le tudjuk tesztelni hogy nem log e ki a  viewportbol.'},
+          {type: 'h4', content: 'Ez valami mas'},
+          {type: 'h4', content: 'Mizuka van'},
+          {type: 'h4', content: 'Ez valami mas'},
+        ],
+        [
+          {type: 'h1', content: 'Hello'},
+          {type: 'h2', content: 'Ez valami mas'},
+          {type: 'h2', content: 'Ez meg egy nagyon hosszu szoveg hogy le tudjuk tesztelni hogy nem log e ki a  viewportbol.'},
+          {type: 'h2', content: 'Mizuka van'},
+          {type: 'h3', content: 'Ez valami mas'},
+          {type: 'h3', content: 'Hello'},
+          {type: 'h4', content: 'Ez meg egy nagyon hosszu szoveg hogy le tudjuk tesztelni hogy nem log e ki a  viewportbol.'},
+          {type: 'h4', content: 'Ez valami mas'},
+          {type: 'h4', content: 'Mizuka van'},
+          {type: 'h4', content: 'Ez valami mas'},
+        ],
+        [
+          {type: 'h1', content: 'Hello'},
+          {type: 'h2', content: 'Ez valami mas'},
+          {type: 'h2', content: 'Ez meg egy nagyon hosszu szoveg hogy le tudjuk tesztelni hogy nem log e ki a  viewportbol.'},
+          {type: 'h2', content: 'Mizuka van'},
+          {type: 'h3', content: 'Ez valami mas'},
+          {type: 'h3', content: 'Hello'},
+          {type: 'h4', content: 'Ez meg egy nagyon hosszu szoveg hogy le tudjuk tesztelni hogy nem log e ki a  viewportbol.'},
+          {type: 'h4', content: 'Ez valami mas'},
+          {type: 'h4', content: 'Mizuka van'},
+          {type: 'h4', content: 'Ez valami mas'},
+        ]
+      ]
     };
 
     this.handleInput = this.handleInput.bind(this);
@@ -84,13 +146,20 @@ class App extends Component {
 
   render () {
     return (
-      <div>
-      <input type="number" value={this.state.value} onChange={this.handleInput} />
-      <button onClick={() => this.callAPI(this.state.value)}>
-        Oh gosh touch me pls
-      </button>
-      <p className="App-intro">;{this.state.apiResponse}</p>
-      <p className="App-intro">;{this.state.value}</p>
+      <div className="posts-container">
+        <input type="number" value={this.state.value} onChange={this.handleInput} />
+        <button onClick={() => this.callAPI(this.state.value)}>
+          Oh gosh touch me pls
+        </button>
+        <p className="App-intro">{this.state.apiResponse}</p>
+        <p className="App-intro">{this.state.value}</p>
+        {this.state.dummyApiResponse.map((f) => {
+          return ( 
+            <Post
+              post={f}
+            />
+          )
+        })}
       </div>
     )
   }
